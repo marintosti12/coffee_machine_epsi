@@ -19,7 +19,7 @@ ALORS la machine sert un café
 ---------------	
 ETANT DONNE une machine à café  
 QUAND on met des pièces non conformes  
-ALORS la machine ne sert pas de café 
+ALORS la machine ne sert pas de café  
 ET rend les pièces  
 
 4ème US : 
@@ -27,7 +27,7 @@ ET rend les pièces
 ETANT DONNE une machine à café  
 QUAND il ne reste plus d'eau  
 ET QU'on met 40 cts  
-ALORS la machine ne sert pas de café 
+ALORS la machine ne sert pas de café  
 ET rend les pièces  
 
 5ème US :
@@ -35,5 +35,5 @@ ET rend les pièces
 ETANT DONNE une machine à café  
 QUAND il ne reste plus de café  
 ET QU'on met 40 cts  
-ALORS la machine ne sert pas de café 
+ALORS la machine ne sert pas de café  
 ET rend les pièces  
