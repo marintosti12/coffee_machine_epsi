@@ -6,7 +6,7 @@ describe("Test MachineACafe", function () {
 
     it("QUAND  on met 40cts ALORS la machine sert un café", function() {
         //ETANT DONNE une machine à café
-        let machine : Machine = new Machine();
+        let machine : Machine = new Machine(0);
         let nombreCafeInitiaux : number = machine.getNombreCafesServis();
         let argentEncaisseInitial : number = machine.getArgentEncaisse();
         let sommeInseree : number = 0.40;
@@ -25,7 +25,7 @@ describe("Test MachineACafe", function () {
 
     it("QUAND  on met 35cts ALORS l'argent est rendu ET aucun café ne coule", function () {
         //ETANT DONNE une machine à café
-        let machine : Machine = new Machine();
+        let machine : Machine = new Machine(0);
         let nombreCafeInitiaux : number = machine.getNombreCafesServis();
         let argentEncaisseInitial : number = machine.getArgentEncaisse();
         let sommeInseree : number = 0.35;
@@ -56,11 +56,15 @@ describe("Test MachineACafe", function () {
         //ET aucun café ne coule
     });
 
-    it("QUAND  on met 35cts ALORS l'argent est rendu ET aucun café ne coule", function () {
+    it("QUAND il ne reste plus de doses de cafés ET QU'on met 40 cts", function () {
         //ETANT DONNE une machine à café
-        //QUAND  on met 35cts
-        //ALORS l'argent est rendu
-        //ET aucun café ne coule
+        let machine : Machine = new Machine(1);
+
+        //QUAND il ne reste plus de doses de cafés
+
+        //ET QU'on met 40 cts
+        //ALORS la machine ne sert pas de café
+        //ET rend les pièces
     });
 
 });

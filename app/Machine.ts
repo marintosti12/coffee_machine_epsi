@@ -1,10 +1,12 @@
 export class Machine {
     nombreCafes : number;
     sommeArgent : number;
+    dosesCafes : number;
 
-    constructor() {
+    constructor(dosesCafes : number) {
         this.nombreCafes = 0;
         this.sommeArgent = 0;
+        this.dosesCafes = dosesCafes;
     }
 
     inserer(sommeInseree: number) : void {
@@ -20,5 +22,10 @@ export class Machine {
 
     getArgentEncaisse() : number {
         return this.sommeArgent;
+    }
+
+    consommerDose() : void {
+        if(this.dosesCafes > 0)
+            this.dosesCafes--;
     }
 }
