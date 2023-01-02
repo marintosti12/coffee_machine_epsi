@@ -8,14 +8,17 @@ export class Machine {
     }
 
     inserer(sommeInseree: number) : void {
-        this.sommeArgent += sommeInseree;
+        if (sommeInseree == 0.40) {
+            this.sommeArgent += sommeInseree;
+            this.nombreCafes++;
+        }
     }
 
     getNombreCafesServis() : number {
-        return this.nombreCafes++;
+        return this.nombreCafes;
     }
 
     getArgentEncaisse() : number {
-        return this.sommeArgent + 0.4;
+        return this.sommeArgent;
     }
 }

@@ -25,9 +25,21 @@ describe("Test MachineACafe", function () {
 
     it("QUAND  on met 35cts ALORS l'argent est rendu ET aucun café ne coule", function () {
         //ETANT DONNE une machine à café
+        let machine : Machine = new Machine();
+        let nombreCafeInitiaux : number = machine.getNombreCafesServis();
+        let argentEncaisseInitial : number = machine.getArgentEncaisse();
+        let sommeInseree : number = 0.35;
+
         //QUAND  on met 35cts
+        machine.inserer(sommeInseree);
+
         //ALORS l'argent est rendu
+        let argentEncaisseFinal = machine.getArgentEncaisse();
+        assert.equal(argentEncaisseInitial, argentEncaisseFinal);
+
         //ET aucun café ne coule
+        let nombreCafesFinaux : number = machine.getNombreCafesServis();
+        assert.equal(nombreCafeInitiaux, nombreCafesFinaux);
     });
 
     it("QUAND  on met 35cts ALORS l'argent est rendu ET aucun café ne coule", function () {
