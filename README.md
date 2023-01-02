@@ -14,6 +14,7 @@ ET aucun café ne coule
 ETANT DONNE une machine à café  
 QUAND on met 40 cts  
 ALORS la machine sert un café  
+ET l'argent est encaissé
 
 3ème US :
 ---------------	
