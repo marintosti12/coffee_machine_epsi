@@ -4,7 +4,8 @@ USER STORIES
 
 1ère US :
 ---------------	
-ETANT DONNE une machine à café
+ETANT DONNE une machine à café  
+
 QUAND  on met 35cts
 ALORS l'argent est rendu
 ET aucun café ne coule
