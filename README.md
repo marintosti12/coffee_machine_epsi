@@ -1,4 +1,3 @@
-# coffee_machine_epsi
 
 USER STORIES
 ===============
