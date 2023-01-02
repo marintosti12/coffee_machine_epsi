@@ -1,18 +1,19 @@
 export class Machine {
     nombreCafes : number;
     sommeArgent : number;
-    dosesCafes : number;
+    eau: number;
 
-    constructor(dosesCafes : number) {
+    constructor(eau: number) {
         this.nombreCafes = 0;
         this.sommeArgent = 0;
-        this.dosesCafes = dosesCafes;
+        this.eau = eau;
     }
 
     inserer(sommeInseree: number) : void {
-        if (sommeInseree == 0.40) {
+        if (sommeInseree == 0.40 && this.eau >= 0.15) {
             this.sommeArgent += sommeInseree;
             this.nombreCafes++;
+            this.eau -= 0.15;
         }
     }
 
@@ -24,8 +25,7 @@ export class Machine {
         return this.sommeArgent;
     }
 
-    consommerDose() : void {
-        if(this.dosesCafes > 0)
-            this.dosesCafes--;
+    getEauRestante(): number {
+        return this.eau;
     }
 }

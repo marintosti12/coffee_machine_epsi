@@ -19,7 +19,7 @@ ET l'argent est encaissé
 3ème US :
 ---------------	
 ETANT DONNE une machine à café  
-QUAND on met des pièces non conformes  
+QUAND il ne reste plus de gobelets  
 ALORS la machine ne sert pas de café  
 ET rend les pièces  
 
@@ -34,7 +34,7 @@ ET rend les pièces
 5ème US :
 ---------------	
 ETANT DONNE une machine à café  
-QUAND il ne reste plus de café  
+QUAND il ne reste plus de café (grains)  
 ET QU'on met 40 cts  
 ALORS la machine ne sert pas de café  
 ET rend les pièces  
