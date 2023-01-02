@@ -2,7 +2,8 @@
 
 ## USER STORIES
 
-#1ère US :
+1ère US :
+---------------	
 ETANT DONNE une machine à café
 QUAND  on met 35cts
 ALORS l'argent est rendu
