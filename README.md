@@ -34,7 +34,7 @@ ET rend les pièces
 5ème US :
 ---------------	
 ETANT DONNE une machine à café  
-QUAND il ne reste plus de café (grains)
+QUAND il ne reste plus de café (grains)  
 ET QU'on met 40 cts  
 ALORS la machine ne sert pas de café  
 ET rend les pièces  
