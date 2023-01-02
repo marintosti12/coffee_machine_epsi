@@ -19,7 +19,7 @@ ET l'argent est encaissé
 3ème US :
 ---------------	
 ETANT DONNE une machine à café  
-QUAND il ne reste plus de gobelets 
+QUAND il ne reste plus de gobelets  
 ALORS la machine ne sert pas de café  
 ET rend les pièces  
 
