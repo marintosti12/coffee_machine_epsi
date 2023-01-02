@@ -6,7 +6,7 @@ describe("Test MachineACafe", function () {
 
     it("QUAND  on met 40cts ALORS la machine sert un café", function() {
         //ETANT DONNE une machine à café
-        let machine : Machine = new Machine(1);
+        let machine : Machine = new Machine(1, 1);
         let nombreCafeInitiaux : number = machine.getNombreCafesServis();
         let argentEncaisseInitial : number = machine.getArgentEncaisse();
         let sommeInseree : number = 0.40;
@@ -25,7 +25,7 @@ describe("Test MachineACafe", function () {
 
     it("QUAND  on met 35cts ALORS l'argent est rendu ET aucun café ne coule", function () {
         //ETANT DONNE une machine à café
-        let machine : Machine = new Machine(1);
+        let machine : Machine = new Machine(1, 1);
         let nombreCafeInitiaux : number = machine.getNombreCafesServis();
         let argentEncaisseInitial : number = machine.getArgentEncaisse();
         let sommeInseree : number = 0.35;
@@ -44,7 +44,7 @@ describe("Test MachineACafe", function () {
 
     it("QUAND il ne reste plus d'eau ET QU'on met 40 cts ALORS la machine ne sert pas de café ET rend les pièces", function () {
         //ETANT DONNE une machine à café
-        let machine : Machine = new Machine(0.15);
+        let machine : Machine = new Machine(0.15, 1);
         let nombreCafeInitiaux : number = machine.getNombreCafesServis();
         let argentEncaisseInitial : number = machine.getArgentEncaisse();
         let eauInitial :number = machine.getEauRestante();
@@ -70,14 +70,29 @@ describe("Test MachineACafe", function () {
     });
 
     it("QUAND il ne reste plus de doses de cafés ET QU'on met 40 cts", function () {
+        
         //ETANT DONNE une machine à café
-        let machine : Machine = new Machine(1);
+        let machine : Machine = new Machine(1, 0);
+        let argentEncaisseInitial : number = machine.getArgentEncaisse();
+        let sommeInseree : number = 0.40;
 
         //QUAND il ne reste plus de doses de cafés
+        let nombreDosettesInitiales : number = machine.getNombreDosettes();
 
         //ET QU'on met 40 cts
-        //ALORS la machine ne sert pas de café
-        //ET rend les pièces
+        machine.inserer(sommeInseree);
+
+        //ALORS la machine ne sert pas de café et ne consomme pas de dosettes
+        let nombreDosettesFinaux : number = machine.getNombreDosettes();
+        assert.equal(nombreDosettesInitiales, nombreDosettesFinaux);
+        
+        let nombreCafesFinaux : number = machine.getNombreCafesServis();
+        assert.equal(nombreDosettesInitiales, nombreCafesFinaux);
+        
+        // ET l'argent n'est pas encaissé
+        let argentEncaisseFinal = machine.getArgentEncaisse();
+        assert.equal(argentEncaisseInitial, argentEncaisseFinal);
+
     });
 
 });
