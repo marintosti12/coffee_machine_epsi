@@ -113,3 +113,61 @@ ETANT DONNE une machine détectant un mug
 ET n'ayant plus de gobelets  
 QUAND on met 40cts  
 ALORS un café coule  
+
+Stock Touillettes : US
+======================
+
+ETANT DONNE une machine à café avec une capacité de 50 touillettes  
+QUAND on la recharge de touillettes  
+ET qu'on dépasse le nombre de touillettes maximum  
+ALORS le rechargement ne peut pas être effectué  
+
+ETANT DONNE une machine dont le stock de touillettes est vide  
+ET qu'on appuie sur le bouton de réapprovisionnement de cette Ressource  
+QUAND on met 40cts  
+ALORS un café coule  
+
+Prix Variables : US
+===============
+ETANT DONNE une machine  
+ET qu'on appuie sur le bouton 'ALLONGE'  
+QUAND on met 40cts  
+ALORS un 'ALLONGE' coule  
+ET 1 dose de café et 2 dose d'eau sont consommées  
+
+ETANT DONNE une machine  
+ET qu'on appuie sur le bouton 'LATTE'  
+QUAND on met 45cts  
+ALORS un 'LATTE' coule
+ET 1 dose de lait et 1 dose de café sont consommées  
+
+ETANT DONNE une machine  
+ET qu'on appuie sur le bouton 'CHOCO'  
+QUAND on met 40cts  
+ALORS un 'CHOCO' coule
+ET 1 dose d 'eau et 1 dose de choco sont consommées  
+
+ETANT DONNE une machine  
+ET qu'on appuie sur le bouton 'CHOCO-LAIT'  
+QUAND on met 40cts  
+ALORS un 'CHOCO-LAIT' coule
+ET 1 dose de lait et 1 dose de choco sont consommées  
+
+ETANT DONNE une machine  
+ET qu'on appuie sur le bouton 'CAPUCCINO'  
+QUAND on met 40cts  
+ALORS un 'CAPUCCINO' coule
+ET 1 dose d'eau, 1 dose de lait, 1 dose de café et 1 dose de choco sont consommées 
+
+CB : US
+===============
+ETANT DONNE une machine  
+QUAND on paye avec une carte bancaire  
+ALORS le montant lié au prix de la boisson est débité  
+ET un café coule  
+
+ETANT DONNE une machine  
+QUAND on paye avec une carte bancaire  
+ET qu'une erreur lors de la transaction se produit  
+ALORS le montant n'est pas débité  
+ET un café ne coule pas 
