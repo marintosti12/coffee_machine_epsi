@@ -154,8 +154,8 @@ describe("Test MachineACafe", function () {
 
 
     it("ETANT DONNE une machine à café avec une capacité de 50 gobelets QUAND on dépasse le nombre de gobelets maximum ALORS aucune actions ne peuvent être effectuées", function () {
-        //ETANT DONNE une machine ayant trop de gobelets avec une limite de 20 gobelets dans la machine
-        let machine : Machine = new Machine(1, 1, 21);
+        //ETANT DONNE une machine ayant trop de gobelets avec une limite de 50 gobelets dans la machine
+        let machine : Machine = new Machine(1, 1, 51);
         let nombreCafeInitiaux : number = machine.getNombreCafesServis();
         let argentEncaisseInitial : number = machine.getArgentEncaisse();
         let sommeInseree : number = 0.40;
@@ -174,8 +174,8 @@ describe("Test MachineACafe", function () {
 
 
     it("ETANT DONNE une machine à café avec une capacité de 50 dosettes QUAND on dépasse le nombre de dosettes maximum ALORS aucune actions ne peuvent être effectuées", function () {
-        //ETANT DONNE une machine ayant trop de dosettes avec une limite de 20 dosettes dans la machine
-        let machine : Machine = new Machine(1, 21, 19);
+        //ETANT DONNE une machine ayant trop de dosettes avec une limite de 50 dosettes dans la machine
+        let machine : Machine = new Machine(1, 51, 19);
         let nombreCafeInitiaux : number = machine.getNombreCafesServis();
         let argentEncaisseInitial : number = machine.getArgentEncaisse();
         let sommeInseree : number = 0.40;
@@ -209,5 +209,106 @@ describe("Test MachineACafe", function () {
         //ET l'argent du café est rendu
         let argentEncaisseFinal = machine.getArgentEncaisse();
         assert.equal(argentEncaisseInitial, argentEncaisseFinal);
+    });
+
+    it("ETANT DONNE une machine dont le stock d'une Ressource Stockée est plein QUAND on appuie sur le bouton de réapprovisionnement de cette Ressource ALORS le stock n'augmente pas", function () {
+        
+        //ETANT DONNE une machine dont le stock d'une Ressource Stockée est plein
+        let machine : Machine = new Machine(5, 20, 19);
+        let volumeEauInitiale : number = machine.getEauRestante();
+
+        //QUAND on insère 2 littres d'eau
+        machine.AjouterEau(2);
+
+        //ALORS le stock n'augmente pas
+        let volumeEauFinale : number = machine.getEauRestante();
+        assert.equal(volumeEauInitiale, volumeEauFinale);
+    });
+
+    it("ETANT DONNE une machine dont le stock d'une Ressource Stockée est plein QUAND on appuie sur le bouton de réapprovisionnement de cette Ressource ALORS le stock n'augmente pas", function () {
+        
+        //ETANT DONNE une machine dont le stock d'une Ressource Stockée est plein
+        let machine : Machine = new Machine(1, 21, 19);
+        let DosettesInitiale : number = machine.getNombreDosettes();
+
+        //QUAND on ajoute 30 dosettes
+        machine.AjouterDosettes(30);
+        
+        //ALORS le stock n'augmente pas
+        let DosettesFinale : number = machine.getNombreDosettes();
+        assert.equal(DosettesInitiale, DosettesFinale);
+    });
+
+
+    it("ETANT DONNE une machine dont le stock d'une Ressource Stockée est plein QUAND on appuie sur le bouton de réapprovisionnement de cette Ressource ALORS le stock n'augmente pas", function () {
+        
+        //ETANT DONNE une machine dont le stock d'une Ressource Stockée est plein
+        let machine : Machine = new Machine(1, 20, 21);
+        let GobeletsInitiale : number = machine.getNombreGobelets();
+
+        //QUAND on ajoute 30 gobelets
+        machine.AjouterGobelets(30);
+        
+        //ALORS le stock n'augmente pas
+        let GobeletsFinaux : number = machine.getNombreGobelets();
+        assert.equal(GobeletsInitiale, GobeletsFinaux);
+    });
+
+
+    it("ETANT DONNE une machine dont le stock d'une Ressource Nécessaire est vide ET qu'on appuie sur le bouton de réapprovisionnement de cette Ressource QUAND on met 40cts ALORS un café coule", function () {
+        
+        //ETANT DONNE une machine dont le stock d'une Ressource Nécessaire
+        let machine : Machine = new Machine(0, 20, 19);
+        let nombreCafeInitiaux : number = machine.getNombreCafesServis();
+        let sommeInseree : number = 0.40;
+ 
+        //QUAND on insère 2 littres d'eau
+        machine.AjouterEau(2);
+
+        //QUAND on insère 40 cts
+        machine.inserer(sommeInseree);
+
+        //ALORS un café coule
+
+        let nombreCafesFinaux : number = machine.getNombreCafesServis();
+        assert.equal(nombreCafeInitiaux, nombreCafesFinaux);
+    });
+
+
+    it("ETANT DONNE une machine dont le stock d'une Ressource Nécessaire est vide ET qu'on appuie sur le bouton de réapprovisionnement de cette Ressource QUAND on met 40cts ALORS un café coule", function () {
+        
+        //ETANT DONNE une machine dont le stock d'une Ressource Nécessaire
+        let machine : Machine = new Machine(2, 0, 19);
+        let nombreCafeInitiaux : number = machine.getNombreCafesServis();
+        let sommeInseree : number = 0.40;
+ 
+        //QUAND on insère 10 dosettes
+        machine.AjouterDosettes(10);
+
+        //QUAND on insère 40 cts
+        machine.inserer(sommeInseree);
+
+        //ALORS un café coule
+
+        let nombreCafesFinaux : number = machine.getNombreCafesServis();
+        assert.equal(nombreCafeInitiaux, nombreCafesFinaux);
+    });
+
+    it("ETANT DONNE une machine dont le stock d'une Ressource Nécessaire est vide ET qu'on appuie sur le bouton de réapprovisionnement de cette Ressource QUAND on met 40cts ALORS un café coule", function () {
+        
+        //ETANT DONNE une machine dont le stock d'une Ressource Nécessaire
+        let machine : Machine = new Machine(2, 20, 0);
+        let nombreCafeInitiaux : number = machine.getNombreCafesServis();
+        let sommeInseree : number = 0.40;
+ 
+        //QUAND on insère 10 gobelets
+        machine.AjouterGobelets(10);
+
+        //QUAND on insère 40 cts
+        machine.inserer(sommeInseree);
+
+        //ALORS un café coule
+        let nombreCafesFinaux : number = machine.getNombreCafesServis();
+        assert.equal(nombreCafeInitiaux, nombreCafesFinaux);
     });
 });
