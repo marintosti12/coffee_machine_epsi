@@ -50,5 +50,16 @@ LIMITES : USER STORIES
 ---------------	
 ETANT DONNE une machine à café  
 QUAND on dépasse le nombre de gobelets maximum
-ALORS l'argent est rendu  
-ET aucun café ne coule  
+ALORS aucune actions ne peuvent être effectuées
+
+2ème US : 
+---------------	
+ETANT DONNE une machine à café  
+QUAND on dépasse le nombre de dosettes maximum  
+ALORS aucune actions ne peuvent être effectuées  
+
+3ème US : 
+---------------	
+ETANT DONNE une machine à café  
+QUAND on dépasse le volume d'eau maximum  
+ALORS aucune actions ne peuvent être effectuées  
