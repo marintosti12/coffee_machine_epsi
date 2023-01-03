@@ -150,4 +150,64 @@ describe("Test MachineACafe", function () {
         let argentEncaisseFinal = machine.getArgentEncaisse();
         assert.equal(argentEncaisseInitial + sommeInseree, argentEncaisseFinal);
     });
+
+
+
+    it("ETANT DONNE une machine à café QUAND on dépasse le nombre de gobelets maximum ALORS aucune actions ne peuvent être effectuées", function () {
+        //ETANT DONNE une machine ayant trop de gobelets avec une limite de 20 gobelets dans la machine
+        let machine : Machine = new Machine(1, 1, 21);
+        let nombreCafeInitiaux : number = machine.getNombreCafesServis();
+        let argentEncaisseInitial : number = machine.getArgentEncaisse();
+        let sommeInseree : number = 0.40;
+
+        //QUAND on insère 1 fois 40 centimes
+        machine.inserer(sommeInseree);
+
+        //ALORS aucun café ne coule
+        let nombreCafesFinaux : number = machine.getNombreCafesServis();
+        assert.equal(nombreCafeInitiaux, nombreCafesFinaux);
+
+        //ET l'argent du café est rendu
+        let argentEncaisseFinal = machine.getArgentEncaisse();
+        assert.equal(argentEncaisseInitial, argentEncaisseFinal);
+    });
+
+
+    it("ETANT DONNE une machine à café QUAND on dépasse le nombre de dosettes maximum ALORS aucune actions ne peuvent être effectuées", function () {
+        //ETANT DONNE une machine ayant trop de dosettes avec une limite de 20 dosettes dans la machine
+        let machine : Machine = new Machine(1, 21, 19);
+        let nombreCafeInitiaux : number = machine.getNombreCafesServis();
+        let argentEncaisseInitial : number = machine.getArgentEncaisse();
+        let sommeInseree : number = 0.40;
+
+        //QUAND on insère 1 fois 40 centimes
+        machine.inserer(sommeInseree);
+
+        //ALORS aucun café ne coule
+        let nombreCafesFinaux : number = machine.getNombreCafesServis();
+        assert.equal(nombreCafeInitiaux, nombreCafesFinaux);
+
+        //ET l'argent du café est rendu
+        let argentEncaisseFinal = machine.getArgentEncaisse();
+        assert.equal(argentEncaisseInitial, argentEncaisseFinal);
+    });
+
+    it("ETANT DONNE une machine à café QUAND on dépasse le volume d'eau maximum ALORS aucune actions ne peuvent être effectuées  ", function () {
+        //ETANT DONNE une machine ayant un trop grand volume d'eau avec une limite de 1 littre dans la machine
+        let machine : Machine = new Machine(2, 20, 19);
+        let nombreCafeInitiaux : number = machine.getNombreCafesServis();
+        let argentEncaisseInitial : number = machine.getArgentEncaisse();
+        let sommeInseree : number = 0.40;
+
+        //QUAND on insère 1 fois 40 centimes
+        machine.inserer(sommeInseree);
+
+        //ALORS aucun café ne coule
+        let nombreCafesFinaux : number = machine.getNombreCafesServis();
+        assert.equal(nombreCafeInitiaux, nombreCafesFinaux);
+
+        //ET l'argent du café est rendu
+        let argentEncaisseFinal = machine.getArgentEncaisse();
+        assert.equal(argentEncaisseInitial, argentEncaisseFinal);
+    });
 });
