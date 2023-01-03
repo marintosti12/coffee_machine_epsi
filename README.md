@@ -1,6 +1,9 @@
 
-USER STORIES
+GROUPE F : USER STORIES
 ===============
+
+Elouan MAINDRON, Marin TOSTIVINT, Imad LOUGHLIMI
+---------------	
 
 1ère US :
 ---------------	
@@ -38,3 +41,14 @@ QUAND il ne reste plus de café (grains)
 ET QU'on met 40 cts  
 ALORS la machine ne sert pas de café  
 ET rend les pièces  
+
+
+LIMITES : USER STORIES
+===============
+
+1ère US :
+---------------	
+ETANT DONNE une machine à café  
+QUAND on dépasse le nombre de gobelets maximum
+ALORS l'argent est rendu  
+ET aucun café ne coule  

@@ -131,4 +131,23 @@ describe("Test MachineACafe", function () {
         assert.equal(argentEncaisseInitial + sommeInseree, argentEncaisseFinal);
     });
 
+    it("ETANT DONNE une machine ayant une seule dose de café QUAND on insère 2 fois 40 centimes ALORS 1 seule café coule ET l'argent du 2ème café est rendu", function () {
+        //ETANT DONNE une machine ayant une seule dose de café
+        let machine : Machine = new Machine(1, 1, 20);
+        let nombreCafeInitiaux : number = machine.getNombreCafesServis();
+        let argentEncaisseInitial : number = machine.getArgentEncaisse();
+        let sommeInseree : number = 0.40;
+
+        //QUAND on insère 2 fois 40 centimes
+        machine.inserer(sommeInseree);
+        machine.inserer(sommeInseree);
+
+        //ALORS un seule café coule
+        let nombreCafesFinaux : number = machine.getNombreCafesServis();
+        assert.equal(nombreCafeInitiaux + 1, nombreCafesFinaux);
+
+        //ET l'argent du 2ème café est rendu
+        let argentEncaisseFinal = machine.getArgentEncaisse();
+        assert.equal(argentEncaisseInitial + sommeInseree, argentEncaisseFinal);
+    });
 });
