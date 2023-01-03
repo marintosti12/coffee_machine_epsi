@@ -71,8 +71,10 @@ QUAND on insère 40cts ALORS un café coule
 ET une dose de sucre est consommée  
 
 ETANT DONNE une machine n'ayant plus de sucre  
-ET un appui sur le bouton sucre QUAND on insère 40cts  
-ALORS aucun café ne coule ET l'argent est remboursé  
+ET un appui sur le bouton sucre  
+QUAND on insère 40cts  
+ALORS aucun café ne coule  
+ET l'argent est remboursé  
 
 ETANT DONNE une machine dont le stock d'une Ressource Stockée est plein  
 QUAND on appuie sur le bouton de réapprovisionnement de cette Ressource  
@@ -85,21 +87,28 @@ QUAND on met 40cts ALORS un café coule
 ETANT DONNE une machine  
 ALORS le stock initial de toute Ressource Stockée est de 1  
 
-ETANT DONNE une machine ET un appui sur le bouton allonger QUAND on met 40cts ALORS un cafe coule ET 2 doses d'eau sont consommées  
+ETANT DONNE une machine  
+ET un appui sur le bouton allonger  
+QUAND on met 40cts  
+ALORS un cafe coule  
+ET 2 doses d'eau sont consommées  
 
 ETANT DONNE une machine  
 ET un appui sur le bouton sucre  
-QUAND on met 40cts ALORS une touillette est consommée  
+QUAND on met 40cts  
+ALORS une touillette est consommée  
 
 ETANT DONNE une machine n'ayant pas de touillette  
 ET un appui sur le bouton sucre  
-QUAND on met 40cts ALORS un café sucré coule quand même  
+QUAND on met 40cts  
+ALORS un café sucré coule quand même  
 
-ETANT DONNE une machine détectant un mug QUAND on met 40 cts
+ETANT DONNE une machine détectant un mug  
+QUAND on met 40 cts  
 ALORS un café coule  
-ET aucun gobelet n'est consommé
+ET aucun gobelet n'est consommé  
 
 ETANT DONNE une machine détectant un mug  
 ET n'ayant plus de gobelets  
 QUAND on met 40cts  
-ALORS un café coule
+ALORS un café coule  
