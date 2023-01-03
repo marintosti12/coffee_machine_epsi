@@ -336,8 +336,6 @@ describe("Test MachineACafe", function () {
         let nombreCafesInitiaux : number = machine.getNombreCafesServis();
         let sommeInseree : number = 0.40;
  
-        
-
         //QUAND on insère 40 cts
         machine.inserer(sommeInseree);
 
