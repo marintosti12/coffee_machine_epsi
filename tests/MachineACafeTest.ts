@@ -286,7 +286,7 @@ describe("Test MachineACafe", function () {
     it("ETANT DONNE une machine dont le stock d'une Ressource Stockée est plein QUAND on appuie sur le bouton de réapprovisionnement de cette Ressource ALORS le stock n'augmente pas", function () {
         
         //ETANT DONNE une machine dont le stock d'une Ressource Stockée est plein
-        let machine : Machine = new Machine(1, 21, 19);
+        let machine : Machine = new Machine(1, 21, 19, 5, 5);
         let DosettesInitiale : number = machine.getNombreDosettes();
 
         //QUAND on ajoute 30 dosettes
