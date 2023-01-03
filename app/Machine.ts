@@ -15,7 +15,7 @@ export class Machine {
 
     validationLesLimitesMaximum() : boolean
     {
-        if (this.gobelets > 20 || this.dosettesRestantes > 20 || this.eau > 1)
+        if (this.gobelets > 50 || this.dosettesRestantes > 50 || this.eau > 1)
             return false;
 
         return true;
@@ -45,6 +45,28 @@ export class Machine {
         }
     }
 
+    AjouterEau(volume: number) : void
+    {
+        if (this.eau + volume < 5) {
+            this.eau += volume;
+        }
+    }
+
+    AjouterDosettes(nombreDosettes: number) : void
+    {
+        if (this.dosettesRestantes + nombreDosettes < 50) {
+            this.dosettesRestantes += nombreDosettes;
+        }
+    }
+    
+    
+    AjouterGobelets(NombreGobelets: number) : void
+    {
+        if (this.gobelets + NombreGobelets < 50) {
+            this.gobelets += NombreGobelets;
+        }
+    }
+
     getNombreCafesServis() : number {
         return this.nombreCafes;
     }
@@ -61,4 +83,7 @@ export class Machine {
         return this.dosettesRestantes;
     }
 
+    getNombreGobelets(): number {
+        return this.gobelets;
+    }
 }
