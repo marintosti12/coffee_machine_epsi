@@ -7,8 +7,9 @@ export class Machine {
     gobelets : number;
     dosesSucres : number;
     erreurSucre : boolean;
+    mug : boolean;
 
-    constructor(eau: number, dosettesRestantes : number, gobelets : number, dosesSucres : number, touillettesRestantes : number) {
+    constructor(eau: number, dosettesRestantes : number, gobelets : number, dosesSucres : number, touillettesRestantes : number, mug : boolean) {
         this.nombreCafes = 0;
         this.sommeArgent = 0;
         this.eau = eau;
@@ -17,6 +18,7 @@ export class Machine {
         this.dosesSucres = dosesSucres;
         this.erreurSucre = false;
         this.touillettesRestantes = touillettesRestantes;
+        this.mug = mug;
     }
 
     validationLesLimitesMaximum() : boolean
@@ -47,7 +49,8 @@ export class Machine {
             this.nombreCafes++;
             this.eau -= 0.15;
             this.dosettesRestantes--;
-            this.gobelets--;
+            if (!this.mug)
+                this.gobelets--;
         }
     }
 
