@@ -13,8 +13,30 @@ export class Machine {
         this.gobelets = gobelets;
     }
 
+    validationLesLimitesMaximum() : boolean
+    {
+        if (this.gobelets > 20 || this.dosettesRestantes > 20 || this.eau > 1)
+            return false;
+
+        return true;
+    }
+
+    validationLesLimitesMinimum() : boolean
+    {
+        if (this.eau < 0.15 || this.dosettesRestantes <= 0 || this.gobelets <= 0)
+            return false;
+
+        return true;
+    }
+
+    validation() : boolean
+    {
+        return this.validationLesLimitesMinimum() && this.validationLesLimitesMaximum();
+    }
+    
     inserer(sommeInseree: number) : void {
-        if (sommeInseree == 0.40 && this.eau >= 0.15 && this.dosettesRestantes > 0 && this.gobelets > 0) {
+
+        if (sommeInseree == 0.40 && this.validation()) {
             this.sommeArgent += sommeInseree;
             this.nombreCafes++;
             this.eau -= 0.15;
