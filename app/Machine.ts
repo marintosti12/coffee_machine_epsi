@@ -1,3 +1,5 @@
+import { CB } from "./CB";
+
 export class Machine {
     nombreCafes : number;
     sommeArgent : number;
@@ -9,16 +11,16 @@ export class Machine {
     erreurSucre : boolean;
     mug : boolean;
 
-    constructor(eau: number, dosettesRestantes : number, gobelets : number, dosesSucres : number, touillettesRestantes : number, mug : boolean) {
+    constructor() {
         this.nombreCafes = 0;
         this.sommeArgent = 0;
-        this.eau = eau;
-        this.dosettesRestantes = dosettesRestantes;
-        this.gobelets = gobelets;
-        this.dosesSucres = dosesSucres;
+        this.eau = 1;
+        this.dosettesRestantes = 1;
+        this.gobelets = 1;
+        this.dosesSucres = 1;
         this.erreurSucre = false;
-        this.touillettesRestantes = touillettesRestantes;
-        this.mug = mug;
+        this.touillettesRestantes = 1;
+        this.mug = false;
     }
 
     validationLesLimitesMaximum() : boolean
@@ -46,12 +48,26 @@ export class Machine {
 
         if (sommeInseree == 0.40 && this.validation() && !this.erreurSucre) {
             this.sommeArgent += sommeInseree;
-            this.nombreCafes++;
-            this.eau -= 0.15;
-            this.dosettesRestantes--;
-            if (!this.mug)
-                this.gobelets--;
+            this.distributionCafe();
         }
+    }
+
+    payementSansContact(montant : number):  void {
+        let cb : CB = new CB();
+
+        if (cb.PayementCarte(montant)) {
+            this.sommeArgent += montant;
+            this.distributionCafe();
+        }
+    }
+
+    distributionCafe() : void
+    {
+        this.nombreCafes++;
+        this.eau -= 0.15;
+        this.dosettesRestantes--;
+        if (!this.mug)
+            this.gobelets--;
     }
 
     AjouterEau(volume: number) : void
