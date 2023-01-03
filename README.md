@@ -48,18 +48,18 @@ LIMITES : USER STORIES
 
 1ère US :
 ---------------	
-ETANT DONNE une machine à café  
+ETANT DONNE une machine à café avec une capacité de 50 gobelets
 QUAND on dépasse le nombre de gobelets maximum
 ALORS aucune actions ne peuvent être effectuées
 
 2ème US : 
 ---------------	
-ETANT DONNE une machine à café  
+ETANT DONNE une machine à café avec une capacité de 50 dosettes
 QUAND on dépasse le nombre de dosettes maximum  
 ALORS aucune actions ne peuvent être effectuées  
 
 3ème US : 
 ---------------	
-ETANT DONNE une machine à café  
+ETANT DONNE une machine à café avec une capacité de volume de 5L d'eau  
 QUAND on dépasse le volume d'eau maximum  
 ALORS aucune actions ne peuvent être effectuées  
