@@ -66,7 +66,8 @@ ALORS aucune actions ne peuvent être effectuées
 
 LIMITES : USER STORIES
 ===============
-ETANT DONNE une machine ET un appui sur le bouton sucre  
+ETANT DONNE une machine  
+ET un appui sur le bouton sucre  
 QUAND on insère 40cts ALORS un café coule  
 ET une dose de sucre est consommée  
 
