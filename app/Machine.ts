@@ -3,14 +3,20 @@ export class Machine {
     sommeArgent : number;
     eau: number;
     dosettesRestantes : number;
+    touillettesRestantes : number;
     gobelets : number;
+    dosesSucres : number;
+    erreurSucre : boolean;
 
-    constructor(eau: number, dosettesRestantes : number, gobelets : number) {
+    constructor(eau: number, dosettesRestantes : number, gobelets : number, dosesSucres : number, touillettesRestantes : number) {
         this.nombreCafes = 0;
         this.sommeArgent = 0;
         this.eau = eau;
         this.dosettesRestantes = dosettesRestantes;
         this.gobelets = gobelets;
+        this.dosesSucres = dosesSucres;
+        this.erreurSucre = false;
+        this.touillettesRestantes = touillettesRestantes;
     }
 
     validationLesLimitesMaximum() : boolean
@@ -36,7 +42,7 @@ export class Machine {
     
     inserer(sommeInseree: number) : void {
 
-        if (sommeInseree == 0.40 && this.validation()) {
+        if (sommeInseree == 0.40 && this.validation() && !this.erreurSucre) {
             this.sommeArgent += sommeInseree;
             this.nombreCafes++;
             this.eau -= 0.15;
@@ -59,6 +65,23 @@ export class Machine {
 
     getNombreDosettes() : number {
         return this.dosettesRestantes;
+    }
+
+    appuyerBoutonSucres() {
+        if(this.dosesSucres > 0) {
+            this.dosesSucres--;
+            this.touillettesRestantes > 0 ? this.touillettesRestantes-- : this.touillettesRestantes = 0;
+        } else {
+            this.erreurSucre = true;
+        }
+    }
+
+    getDosesSucres() : number {
+        return this.dosesSucres;
+    }
+
+    getNombreTouillettes() : number {
+        return this.touillettesRestantes;
     }
 
 }
