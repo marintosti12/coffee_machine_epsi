@@ -149,13 +149,13 @@ ET 1 dose d 'eau et 1 dose de choco sont consommées
 
 ETANT DONNE une machine  
 ET qu'on appuie sur le bouton 'CHOCO-LAIT'  
-QUAND on met 40cts  
+QUAND on met 45cts  
 ALORS un 'CHOCO-LAIT' coule
 ET 1 dose de lait et 1 dose de choco sont consommées  
 
 ETANT DONNE une machine  
 ET qu'on appuie sur le bouton 'CAPUCCINO'  
-QUAND on met 40cts  
+QUAND on met 50cts  
 ALORS un 'CAPUCCINO' coule
 ET 1 dose d'eau, 1 dose de lait, 1 dose de café et 1 dose de choco sont consommées 
 
