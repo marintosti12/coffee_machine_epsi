@@ -114,7 +114,20 @@ ET n'ayant plus de gobelets
 QUAND on met 40cts  
 ALORS un café coule  
 
-Prix Variables
+Stock Touillettes : US
+======================
+
+ETANT DONNE une machine à café avec une capacité de 50 touillettes  
+QUAND on la recharge de touillettes  
+ET qu'on dépasse le nombre de touillettes maximum  
+ALORS le rechargement ne peut pas être effectué  
+
+ETANT DONNE une machine dont le stock de touillettes est vide  
+ET qu'on appuie sur le bouton de réapprovisionnement de cette Ressource  
+QUAND on met 40cts  
+ALORS un café coule  
+
+Prix Variables : US
 ===============
 ETANT DONNE une machine  
 ET qu'on appuie sur le bouton 'ALLONGE'  
@@ -144,4 +157,17 @@ ETANT DONNE une machine
 ET qu'on appuie sur le bouton 'CAPUCCINO'  
 QUAND on met 40cts  
 ALORS un 'CAPUCCINO' coule
-ET 1 dose d'eau, 1 dose de lait, 1 dose de café et 1 dose de choco sont consommées  
+ET 1 dose d'eau, 1 dose de lait, 1 dose de café et 1 dose de choco sont consommées 
+
+CB : US
+===============
+ETANT DONNE une machine  
+QUAND on paye avec une carte bancaire  
+ALORS le montant lié au prix de la boisson est débité  
+ET un café coule  
+
+ETANT DONNE une machine  
+QUAND on paye avec une carte bancaire  
+ET qu'une erreur lors de la transaction se produit  
+ALORS le montant n'est pas débité  
+ET un café ne coule pas 
