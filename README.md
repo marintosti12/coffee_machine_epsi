@@ -117,18 +117,18 @@ ALORS un café coule
 Stock Touillettes : US
 ======================
 
-ETANT DONNE une machine à café avec une capacité de 50 touillettes  
+ETANT DONNE une machine à café avec un stock initial de 50 touillettes  
+ET une capacité de 50 touillettes  
 QUAND on la recharge de touillettes  
-ET qu'on dépasse le nombre de touillettes maximum  
 ALORS le rechargement ne peut pas être effectué  
 
-ETANT DONNE une machine dont le stock de touillettes est vide  
-ET qu'on appuie sur le bouton de réapprovisionnement de cette Ressource  
-QUAND on met 40cts  
-ALORS un café coule  
+ETANT DONNE une machine à café avec un stock initial de 10 touillettes  
+ET une capacité de 50 touillettes  
+QUAND on la recharge de touillettes  
+ALORS le rechargement peut être effectué  
 
 Prix Variables : US
-===============
+===================
 ETANT DONNE une machine  
 ET qu'on appuie sur le bouton 'ALLONGE'  
 QUAND on met 40cts  
@@ -157,17 +157,18 @@ ETANT DONNE une machine
 ET qu'on appuie sur le bouton 'CAPUCCINO'  
 QUAND on met 50cts  
 ALORS un 'CAPUCCINO' coule
-ET 1 dose d'eau, 1 dose de lait, 1 dose de café et 1 dose de choco sont consommées 
+ET 1 dose d'eau, 1 dose de lait, 1 dose de café et 1 dose de choco sont consommées  
 
 CB : US
-===============
-ETANT DONNE une machine  
-QUAND on paye avec une carte bancaire  
-ALORS le montant lié au prix de la boisson est débité  
+=======
+ETANT DONNE une machine avec un module de paiement sans contact
+QUAND on appuye sur le bouton CB
+ALORS le module valide le paiement  
 ET un café coule  
+ET l'argent est encaissé de 40cts  
 
-ETANT DONNE une machine  
-QUAND on paye avec une carte bancaire  
-ET qu'une erreur lors de la transaction se produit  
-ALORS le montant n'est pas débité  
-ET un café ne coule pas 
+ETANT DONNE une machine avec un module de paiement sans contact
+QUAND on appuye sur le bouton CB  
+ALORS le module ne valide pas le paiement  
+ET un café ne coule pas  
+ET aucun argent n'est encaissé  
