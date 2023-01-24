@@ -39,6 +39,16 @@ export class BuilderMachine
         return this;
     }
 
+    AjoutXLait(nombre : number) : BuilderMachine {
+        this.machine.lait = nombre;
+        return this;
+    }
+
+    AjoutXChoco(nombre : number) : BuilderMachine {
+        this.machine.chocolatRestant = nombre;
+        return this;
+    }
+
     MachineAvecOuSansMug(mug: boolean): BuilderMachine {
         this.machine.mug = mug;
         return this;

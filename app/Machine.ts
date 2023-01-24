@@ -3,8 +3,11 @@ import { ModulePrelevementAutomatique } from "./ModulePrelevementAutomatique";
 export class Machine {
     nombreCafes : number;
     sommeArgent : number;
-    eau: number;
+    montantRequis : number;
+    eau : number;
+    lait : number;
     dosettesRestantes : number;
+    chocolatRestant : number;
     touillettesRestantes : number;
     gobelets : number;
     dosesSucres : number;
@@ -12,16 +15,39 @@ export class Machine {
     mug : boolean;
     payement!: ModulePrelevementAutomatique;
 
+    dosettesRequises : number;
+    dosesEauRequises : number;
+    dosesLaitRequis : number;
+    dosesChocoRequis : number;
+    boissons : any;
+
     constructor() {
         this.nombreCafes = 0;
         this.sommeArgent = 0;
+        this.montantRequis = 0.40;
         this.eau = 1;
+        this.lait = 1;
         this.dosettesRestantes = 1;
+        this.chocolatRestant = 1;
         this.gobelets = 1;
         this.dosesSucres = 1;
         this.erreurSucre = false;
         this.touillettesRestantes = 1;
         this.mug = false;
+
+        this.dosettesRequises = 0;
+        this.dosesEauRequises = 0;
+        this.dosesLaitRequis = 0;
+        this.dosesChocoRequis = 0;
+
+        this.boissons = {
+            CAFE : {prix : 0.40, ingredients : {eau : 1, lait : 0, choco : 0, dosettes : 1}},
+            ALLONGE : {prix : 0.45, ingredients : {eau : 2, lait : 0, choco : 0, dosettes : 1}},
+            LATTE : {prix : 0.40, ingredients : {eau : 0, lait : 1, choco : 0, dosettes : 1}},
+            CHOCO : {prix : 0.40, ingredients : {eau : 1, lait : 0, choco : 1, dosettes : 0}},
+            CHOCOLAIT : {prix : 0.45, ingredients : {eau : 0, lait : 1, choco : 1, dosettes : 0}},
+            CAPUCCINO : {prix : 0.50, ingredients : {eau : 1, lait : 1, choco : 1, dosettes : 1}}
+        };
     }
 
     validationLesLimitesMaximum() : boolean
@@ -46,8 +72,7 @@ export class Machine {
     }
     
     inserer(sommeInseree: number) : void {
-
-        if (sommeInseree == 0.40 && this.validation() && !this.erreurSucre) {
+        if (sommeInseree == this.montantRequis && this.validation() && !this.erreurSucre) {
             this.sommeArgent += sommeInseree;
             this.distributionCafe();
         }
@@ -62,8 +87,10 @@ export class Machine {
     distributionCafe() : void
     {
         this.nombreCafes++;
-        this.eau -= 0.15;
-        this.dosettesRestantes--;
+        this.eau -= 0.15 * this.dosesEauRequises;
+        this.dosettesRestantes -= this.dosettesRequises;
+        this.lait -= 0.15 * this.dosesLaitRequis;
+        this.chocolatRestant -= this.dosesChocoRequis;
         if (!this.mug)
             this.gobelets--;
     }
@@ -117,8 +144,16 @@ export class Machine {
         return this.eau;
     }
 
+    getLaitRestant(): number {
+        return this.lait;
+    }
+
     getNombreDosettes() : number {
         return this.dosettesRestantes;
+    }
+
+    getNombreChocolat() : number {
+        return this.chocolatRestant;
     }
     
     appuyerBoutonSucres() {
@@ -140,5 +175,13 @@ export class Machine {
 
     getNombreGobelets(): number {
         return this.gobelets;
+    }
+
+    appuyerBoisson(b : string) : void {
+        this.montantRequis = this.boissons[b].prix;
+        this.dosettesRequises = this.boissons[b].ingredients.dosettes;
+        this.dosesEauRequises = this.boissons[b].ingredients.eau;
+        this.dosesChocoRequis = this.boissons[b].ingredients.choco;
+        this.dosesLaitRequis = this.boissons[b].ingredients.lait;
     }
 }

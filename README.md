@@ -171,4 +171,4 @@ ETANT DONNE une machine avec un module de paiement sans contact
 QUAND on appuye sur le bouton CB  
 ALORS le module ne valide pas le paiement  
 ET un café ne coule pas  
-ET aucun argent n'est encaissé  
+ET aucun argent n'est encaissé
