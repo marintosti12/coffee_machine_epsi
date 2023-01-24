@@ -7,6 +7,8 @@ import { ModulePayementSpy } from './mock/ModulePayementSpy';
 const assert = require('assert');
 
 
+describe("Test Module de payement", function () {
+
 it("ETANT DONNE une machine avec un module de paiement sans contact qui retourne ok QUAND on appuye sur le bouton CB ALORS le module valide le paiement ET un café coule ET l'argent est encaissé de 40cts", function () {
         
     //ETANT DONNE une machine avec un module de paiement sans contact qui retourne ok
@@ -65,4 +67,6 @@ it("ETANT DONNE une machine avec un module de paiement sans contact qui retourne
     // l'argent n'est pas encaissé
     let argentEncaisseFinal = machine.getArgentEncaisse();
     assert.equal(argentEncaisseInitial, argentEncaisseFinal);
+});
+
 });
