@@ -1,4 +1,5 @@
 import { Machine } from "./Machine";
+import { ModulePrelevementAutomatique } from "./ModulePrelevementAutomatique";
 
 export class BuilderMachine
 {
@@ -35,6 +36,11 @@ export class BuilderMachine
 
     MachineAvecOuSansMug(mug: boolean): BuilderMachine {
         this.machine.mug = mug;
+        return this;
+    }
+
+    AjoutModulePayement(module : ModulePrelevementAutomatique) {
+        this.machine.AjouterModulePayement(module);
         return this;
     }
 }

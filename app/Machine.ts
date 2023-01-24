@@ -1,4 +1,4 @@
-import { CB } from "./CB";
+import { ModulePrelevementAutomatique } from "./ModulePrelevementAutomatique";
 
 export class Machine {
     nombreCafes : number;
@@ -10,6 +10,7 @@ export class Machine {
     dosesSucres : number;
     erreurSucre : boolean;
     mug : boolean;
+    payement!: ModulePrelevementAutomatique;
 
     constructor() {
         this.nombreCafes = 0;
@@ -53,11 +54,8 @@ export class Machine {
     }
 
     payementSansContact(montant : number):  void {
-        let cb : CB = new CB();
-
-        if (cb.PayementCarte(montant)) {
-            this.sommeArgent += montant;
-            this.distributionCafe();
+        if (this.payement.Prelever(montant)) {
+            this.inserer(montant);
         }
     }
 
@@ -90,6 +88,11 @@ export class Machine {
         if (this.gobelets + NombreGobelets < 50) {
             this.gobelets += NombreGobelets;
         }
+    }
+
+    AjouterModulePayement(module : ModulePrelevementAutomatique)
+    {
+        this.payement = module;
     }
 
     getNombreCafesServis() : number {

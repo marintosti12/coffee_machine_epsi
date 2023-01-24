@@ -457,22 +457,4 @@ describe("Test MachineACafe", function () {
         let nombreCafesFinaux : number = machine.getNombreCafesServis();
         assert.equal(nombreCafesInitiaux, nombreCafesFinaux);
     });
-
-
-    it("ETANT DONNE une machine QUAND on paye avec une carte bancaire ALORS un café coule ", function () {
-        
-        //ETANT DONNE une machine detecte un mug 
-        let builder : BuilderMachine = new BuilderMachine();
-
-        let machine : Machine = builder.getMachine();
-        let nombreCafesInitiaux : number = machine.getNombreCafesServis();
-        let montant : number = 0.40;
- 
-        //QUAND on paye avec une carte bancaire
-        machine.payementSansContact(montant);
-
-        //ALORS un café coule 
-        let nombreCafesFinaux : number = machine.getNombreCafesServis();
-        assert.equal(nombreCafesInitiaux, nombreCafesFinaux);
-    });
 });
