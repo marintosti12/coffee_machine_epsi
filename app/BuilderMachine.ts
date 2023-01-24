@@ -24,6 +24,11 @@ export class BuilderMachine
         return this;
     }
 
+    AjoutTouillettes(nombre : number): BuilderMachine {
+        this.machine.touillettesRestantes = nombre;
+        return this;
+    }
+
     AjoutXDosettes(nombre : number): BuilderMachine {
         this.machine.dosettesRestantes = nombre;
         return this;

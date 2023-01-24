@@ -68,6 +68,16 @@ export class Machine {
             this.gobelets--;
     }
 
+    Rechargementtouillettes() : boolean 
+    {
+        if (50 <= this.touillettesRestantes)
+            return false;
+
+        this.touillettesRestantes += 1;
+        
+        return true;
+    }
+
     AjouterEau(volume: number) : void
     {
         if (this.eau + volume < 5) {
